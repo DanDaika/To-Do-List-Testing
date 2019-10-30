@@ -1,5 +1,5 @@
-var toDoListHomepage = require ('D:/Workspaces/Visual Studio Code/ToDoList/pages/toDoListHomepage.js');
-var tasksList = require ('D:/Workspaces/Visual Studio Code/ToDoList/utils/helper.js');
+var toDoListHomepage = require ('../pages/toDoListHomepage.js');
+var tasksList = require ('../utils/helper.js');
 var checkedTask = 'ng-scope completed';
 var notCheckedTask = 'ng-scope';
 var extraText = ', this text is added extra!';
@@ -262,7 +262,7 @@ describe ('Test Case 04 -> ', () => {
 
 describe ('Test Case 05 -> ', () => {
 
-    fit ('Verify that the views are updated correctly', async () => {
+    it ('Verify that the views are updated correctly', async () => {
         await toDoListHomepage.addNewTask(tasksList.getTask(29));
         await toDoListHomepage.addNewTask(tasksList.getTask(30));
         await toDoListHomepage.addNewTask(tasksList.getTask(31));
