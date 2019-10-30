@@ -139,5 +139,8 @@ var ToDoListHomepage = function() {
         });
     };
 
+    this.isTheToDoListEmty = async () => {
+        return await selectDeselectAllButton.isDisplayed();
+    };
 };
 module.exports = new ToDoListHomepage();

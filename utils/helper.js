@@ -44,7 +44,21 @@ var tasks = ['Clear',                                                           
 '-765',                                                                                 //task id 33
 'This IS a random tEXt',                                                                //task id 34
 'Cactussssssssssssssss',                                                                //task id 35
-'=321as'                                                                                //task id 23
+'1234555',                                                                              //task id 36
+'000000000000000000001',                                                                //task id 37
+'Water is too cold',                                                                    //task id 38
+'WREWTIREGOFIFSOGIFGORITOETIROETIORETI',                                                //task id 39
+'dsnadjaskfjafjsahfjafjasfka][][][][]0))())21241430?"""">}}">',                         //task id 40
+'now',                                                                                  //task id 41
+'then',                                                                                 //task id 42
+'milk',                                                                                 //task id 43
+'get some vodka',                                                                       //task id 44
+'put the dog to sleep',                                                                 //task id 45
+'Cactussssssssssssssss',                                                                //task id 35
+'Cactussssssssssssssss',                                                                //task id 35
+'Cactussssssssssssssss',                                                                //task id 35
+'Cactussssssssssssssss',                                                                //task id 35
+'Cactussssssssssssssss'                                                                 //task id 35
 
 ];                                                                                         
 
