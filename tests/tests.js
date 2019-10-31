@@ -344,7 +344,7 @@ describe ('Test Case 05 -> ', () => {
 
 describe ('Test Case 06 -> ', () => {
 
-    fit ('Check the select/deselect all functionality', async () => {
+    it ('Check the select/deselect all functionality', async () => {
         for (i=36;i<46;i++){
             await toDoListHomepage.addNewTask(tasksList.getTask(i));
         };        
@@ -469,6 +469,49 @@ describe ('Test Case 06 -> ', () => {
         await toDoListHomepage.clickClearCompleted();
         expect(toDoListHomepage.getNumberOfTasks()).toEqual(empty,'[168] The number of tasks is wrong!');
         this.checkDisplayStatusOfAll(notDisplayed,notDisplayed,notDisplayed,notDisplayed,notDisplayed,notDisplayed);   
+    });
+});
+
+describe ('Test Case 07 -> ', () => {
+
+    it ('Create a to-do list with 300 entries and verify its behavior', async () => {
+        for (i=46;i<346;i++){
+            await toDoListHomepage.addNewTask(tasksList.getTask(i));
+        };
+        expect(toDoListHomepage.getNumberOfTasks()).toEqual(300,'[01] The number of tasks is wrong!');
+        expect(toDoListHomepage.getNumberOfItemsLeft()).toEqual('300 items left','[02] The number of "items left" is wrong!');
+        for (i=0,j=46;j<346;i++,j++){
+            expect(toDoListHomepage.getDesiredTaskText(i)).toEqual(tasksList.getDisplayedTask(j),'['+(i+3)+'] The displayed task is wrong!');
+        }; 
+
+        await toDoListHomepage.clickCompletedView();
+        expect(toDoListHomepage.getNumberOfTasks()).toEqual(empty,'[01] The number of tasks is wrong!');
+        expect(toDoListHomepage.getNumberOfItemsLeft()).toEqual('300 items left','[02] The number of "items left" is wrong!');
+
+        await toDoListHomepage.selectDeselectAll();
+        expect(toDoListHomepage.getNumberOfTasks()).toEqual(300,'[03] The number of tasks is wrong!');
+        expect(toDoListHomepage.getNumberOfItemsLeft()).toEqual('0 items left','[04] The number of "items left" is wrong!');
+
+        await toDoListHomepage.clickActiveView();
+        expect(toDoListHomepage.getNumberOfTasks()).toEqual(0,'[05] The number of tasks is wrong!');
+        expect(toDoListHomepage.getNumberOfItemsLeft()).toEqual('0 items left','[06] The number of "items left" is wrong!');
+
+        await toDoListHomepage.selectDeselectAll();
+        expect(toDoListHomepage.getNumberOfTasks()).toEqual(300,'[07] The number of tasks is wrong!');
+        expect(toDoListHomepage.getNumberOfItemsLeft()).toEqual('300 items left','[08] The number of "items left" is wrong!');
+
+        await toDoListHomepage.selectDeselectAll();
+        expect(toDoListHomepage.getNumberOfTasks()).toEqual(0,'[09] The number of tasks is wrong!');
+        expect(toDoListHomepage.getNumberOfItemsLeft()).toEqual('0 items left','[10] The number of "items left" is wrong!');
+
+        await toDoListHomepage.clickAllView();
+        expect(toDoListHomepage.getNumberOfTasks()).toEqual(300,'[11] The number of tasks is wrong!');
+        expect(toDoListHomepage.getNumberOfItemsLeft()).toEqual('0 items left','[12] The number of "items left" is wrong!');
+
+        await toDoListHomepage.clickClearCompleted();
+        expect(toDoListHomepage.getNumberOfTasks()).toEqual(empty,'[13] The number of tasks is wrong!');
+        this.checkDisplayStatusOfAll(notDisplayed,notDisplayed,notDisplayed,notDisplayed,notDisplayed,notDisplayed); 
+
     });
 });
 

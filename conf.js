@@ -4,5 +4,6 @@ exports.config = {
   specs: ['./tests/tests.js'],
   multiCapabilities: [{
     browserName: 'firefox'
-  }]
+  }],
+  jasmineNodeOpts: {defaultTimeoutInterval: 60000}
 }
