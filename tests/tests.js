@@ -24,6 +24,7 @@ this.checkDisplayStatusOfAll = (selectDeselectAll,itemsLeft,allViewButton,active
 describe ('Test Cases: ', () => {
     beforeAll( async () => {
         await toDoListHomepage.getUrl(url);
+        await browser.manage().window().maximize();
         expect(toDoListHomepage.getCurrentUrl()).toMatch(url,'[001] The loaded URL is wrong!');        
         expect(toDoListHomepage.getTodosPageName()).toEqual(toDoListHomepageName,'[002] The loaded page is wrong!');
     });
@@ -512,6 +513,48 @@ describe ('Test Case 07 -> ', () => {
         expect(toDoListHomepage.getNumberOfTasks()).toEqual(empty,'[13] The number of tasks is wrong!');
         this.checkDisplayStatusOfAll(notDisplayed,notDisplayed,notDisplayed,notDisplayed,notDisplayed,notDisplayed); 
 
+    });
+});
+
+describe ('Test Case 08 -> ', () => {
+
+    it ('Verify that the to-do list is saved', async () => {
+        for (i=0;i<5;i++){
+            await toDoListHomepage.addNewTask(tasksList.getTask(i));
+        };
+        await toDoListHomepage.clickDesiredTask(tasksList.getDisplayedTask(1));
+        await toDoListHomepage.clickDesiredTask(tasksList.getDisplayedTask(3));
+        await toDoListHomepage.clickDesiredTask(tasksList.getDisplayedTask(4));
+        expect(toDoListHomepage.getNumberOfTasks()).toEqual(5,'[01] The number of tasks is wrong!');
+        expect(toDoListHomepage.getNumberOfItemsLeft()).toEqual('2 items left','[02] The number of "items left" is wrong!');
+        for (i=0,j=0;j<5;i++,j++){
+            expect(toDoListHomepage.getDesiredTaskText(i)).toEqual(tasksList.getDisplayedTask(j),'['+(i+3)+'] The displayed task is wrong!');
+        };
+        expect(toDoListHomepage.getDesiredTaskStatus(tasksList.getDisplayedTask(0))).toEqual(notCheckedTask,'[9] The task is checked!');
+        expect(toDoListHomepage.getDesiredTaskStatus(tasksList.getDisplayedTask(1))).toEqual(checkedTask,'[10] The task is not checked!');
+        expect(toDoListHomepage.getDesiredTaskStatus(tasksList.getDisplayedTask(2))).toEqual(notCheckedTask,'[11] The task is checked!');
+        expect(toDoListHomepage.getDesiredTaskStatus(tasksList.getDisplayedTask(3))).toEqual(checkedTask,'[12] The task is not checked!');
+        expect(toDoListHomepage.getDesiredTaskStatus(tasksList.getDisplayedTask(4))).toEqual(checkedTask,'[13] The task is not checked!');
+
+
+        await browser.refresh();
+        for (i=0,j=0;j<5;i++,j++){
+            expect(toDoListHomepage.getDesiredTaskText(i)).toEqual(tasksList.getDisplayedTask(j),'['+(i+14)+'] The displayed task is wrong!');
+        };
+        await toDoListHomepage.clickActiveView();
+        expect(toDoListHomepage.getNumberOfTasks()).toEqual(2,'[20] The number of tasks is wrong!');
+        expect(toDoListHomepage.getNumberOfItemsLeft()).toEqual('2 items left','[21] The number of "items left" is wrong!');
+        expect(toDoListHomepage.getDesiredTaskText(0)).toEqual(tasksList.getDisplayedTask(0),'[22] The displayed task is wrong!');
+        expect(toDoListHomepage.getDesiredTaskText(1)).toEqual(tasksList.getDisplayedTask(2),'[23] The displayed task is wrong!');
+        
+
+        await toDoListHomepage.openNewTab();
+        await toDoListHomepage.getUrl(urlCompleted);
+        expect(toDoListHomepage.getNumberOfTasks()).toEqual(3,'[24] The number of tasks is wrong!');
+        expect(toDoListHomepage.getNumberOfItemsLeft()).toEqual('2 items left','[25] The number of "items left" is wrong!');
+        expect(toDoListHomepage.getDesiredTaskText(0)).toEqual(tasksList.getDisplayedTask(1),'[26] The displayed task is wrong!');
+        expect(toDoListHomepage.getDesiredTaskText(1)).toEqual(tasksList.getDisplayedTask(3),'[27] The displayed task is wrong!');
+        expect(toDoListHomepage.getDesiredTaskText(2)).toEqual(tasksList.getDisplayedTask(4),'[28] The displayed task is wrong!');
     });
 });
 
