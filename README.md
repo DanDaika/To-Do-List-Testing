@@ -32,7 +32,7 @@ First of all make sure you got google chrome installed, and check the installed 
 Also make sure that the *hosts* file from the following location, *C:\Windows\System32\drivers\etc*, has a **localhost** defined at **127.0.0.1**
 
 From a command line or terminal window, change directory to your local repository folder and run the package.json with:
-***npm install package.json***
+***npm install***
 
 Now run the tests with:
 ***protractor conf.js***
