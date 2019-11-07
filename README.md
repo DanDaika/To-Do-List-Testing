@@ -12,8 +12,12 @@ Go to the site [node.js](https://nodejs.org/en/download/) and download the neces
 Use npm to install Protractor globally with:
 ***npm install -g protractor***
 
-This will install two command line tools, protractor and webdriver-manager. Try running protractor --version to make sure it's working.
-The webdriver-manager is a helper tool to easily get an instance of a Selenium Server running. 
+This will install two command line tools, protractor and webdriver-manager. Try running **protractor -version** to make sure it's working.
+The webdriver-manager is a helper tool to easily get an instance of a Selenium Server running.
+
+You will need to have [Java](https://java.com/en/download/manual.jsp) installed to run the standalone Selenium Server. Check this by running **java -version** from the command line.
+
+Setup 
 
 Use it to download the necessary binaries with:
 ***webdriver-manager update***
