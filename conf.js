@@ -1,6 +1,24 @@
 var HtmlReporter = require('protractor-beautiful-reporter');
 var today = new Date(),
-timeStamp = '0' + today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear() + '--' + today.getHours() + 'h-' + today.getMinutes() + 'm';
+
+addZerroForMinutesSmallerThanTen = function () {
+  if (today.getMinutes()>9) {return today.getMinutes()} else {return ('0'+today.getMinutes())};
+};
+
+addZerroForHoursSmallerThanTen = function () {
+  if (today.getHours()>9) {return today.getHours()} else {return ('0'+today.getHours())};
+};
+
+addZerroForDatesSmallerThanTen = function () {
+  if (today.getDate()>9) {return today.getDate()} else {return ('0'+today.getDate())};
+};
+
+addZerroForMonthsSmallerThanTen = function () {
+  if ((today.getMonth() + 1)>9) {return (today.getMonth() + 1)} else {return ('0'+ (today.getMonth() + 1))};
+};
+
+timeStamp = addZerroForDatesSmallerThanTen() + '-' + addZerroForMonthsSmallerThanTen() + '-' + today.getFullYear() + '/' + addZerroForHoursSmallerThanTen() + '-' + addZerroForMinutesSmallerThanTen();
+
 
 exports.config = {
   framework: 'jasmine',
