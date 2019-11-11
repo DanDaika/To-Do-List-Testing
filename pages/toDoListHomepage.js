@@ -8,7 +8,6 @@ var ToDoListHomepage = function() {
     var clearCompletedButton = element(by.className('clear-completed'));
     var todosPageName = element(by.css('.header>h1'));
     var toDoList = element.all(by.repeater('todo in todos'));
-    var firstPageInBrowser = element(by.css('body'));
     var taskCheckedStatusAttribute = 'class';
     var taskSelectDeselectButton = 'todo.completed';
     var taskDoubleClickText = 'ng-binding';
