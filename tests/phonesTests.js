@@ -17,18 +17,6 @@ describe ('Test Cases Phones - ', () => {
         else { phoneHomepage.getSearchField().then(text  => {if (text!=""){phoneHomepage.clearSearch()}})}});
     });
 
-    // it ('First', async () => {
-    //     // phoneHomepage.getSearchFieldTitle().then((text) => {console.log('iiiiiiiiiiiii = ',text)});
-    //     // phoneHomepage.getSortFieldTitle().then((text) => {console.log('iiiiiiiiiiiii = ',text)});
-    //     // console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu      ',phonesList.getPhone('Dell Venue'));
-    //     // phoneHomepage.getAllPhones().then(list => {list.forEach(element => { element.getText().then(text => {console.log(text)})})});
-    //     // await phoneHomepage.getAllPhones();
-    //     await phoneHomepage.sortAlphabetical();
-    //     await phoneHomepage.searchForAPhone('Dell');
-    //     browser.sleep(3000);
-
-    // });
-
     describe ('Test Case 1: ', () => {
         it ('Search for Dell', async () => {
             await phoneHomepage.sortNewest();
