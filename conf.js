@@ -23,11 +23,10 @@ timeStamp = addZerroForDatesSmallerThanTen() + '-' + addZerroForMonthsSmallerTha
 exports.config = {
   framework: 'jasmine',
   seleniumAddress: 'http://localhost:4444/wd/hub',
-  specs: ['./tests/phonesTests.js', 
-          './tests/tests.js'],
-  multiCapabilities: [{
+  specs: ['./tests/*.js'],
+  capabilities: {
     browserName: 'chrome'
-  }],
+  },
   jasmineNodeOpts: {defaultTimeoutInterval: 120000},
   onPrepare: () => {
     jasmine.getEnv().addReporter(new HtmlReporter({
