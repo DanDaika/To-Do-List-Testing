@@ -7,6 +7,10 @@ var PhonesHomepage = function() {
     var sortDropDownTitle = element(by.css('.col-md-2>p:last-child:not(.ng-pristine)'));
     var allPhones = element.all(by.repeater('phone in $ctrl.phones'));
 
+    this.disableOrEnableWaitingForAngular = (enableOrDisable) =>{
+        browser.waitForAngularEnabled(enableOrDisable);
+    };
+    
     this.getUrl = async (url) => {
         await browser.get(url);
     };
@@ -15,7 +19,7 @@ var PhonesHomepage = function() {
         await browser.manage().window().maximize();
     };
 
-        this.getCurrentUrl = async () => {
+    this.getCurrentUrl = async () => {
         return await browser.getCurrentUrl();
     };
 

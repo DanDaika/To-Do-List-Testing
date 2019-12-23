@@ -23,6 +23,7 @@ this.checkDisplayStatusOfAll = (selectDeselectAll,itemsLeft,allViewButton,active
 
 describe ('Test Cases: ', () => {
     beforeAll( async () => {
+        toDoListHomepage.disableOrEnableWaitingForAngular(true);
         await toDoListHomepage.getUrl(url);
         await browser.manage().window().maximize();
         expect(toDoListHomepage.getCurrentUrl()).toMatch(url,'[001] The loaded URL is wrong!');        
