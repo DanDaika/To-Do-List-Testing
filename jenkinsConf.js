@@ -25,7 +25,10 @@ exports.config = {
   directConnect:true,
   specs: ['./tests/*.js'],
   capabilities: {
-    browserName: 'chrome'
+    browserName: 'chrome',
+    'goog:chromeOptions': {
+      w3c: false
+      }
   },
   jasmineNodeOpts: {defaultTimeoutInterval: 120000},
   onPrepare: () => {

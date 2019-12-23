@@ -15,6 +15,10 @@ var ToDoListHomepage = function() {
     var deleteButton = 'destroy';
     var valueAttribute = 'value';
 
+    this.disableOrEnableWaitingForAngular = (enableOrDisable) =>{
+        browser.waitForAngularEnabled(enableOrDisable);
+    };
+
     this.getUrl = async (url) => {
         await browser.get(url);
     };

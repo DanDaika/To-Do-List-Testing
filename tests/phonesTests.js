@@ -5,6 +5,7 @@ var url = 'http://angular.github.io/angular-phonecat/step-14/app/#!/phones';
 
 describe ('Test Cases Phones - ', () => {
     beforeAll( async () => {
+        phoneHomepage.disableOrEnableWaitingForAngular(true);
         await phoneHomepage.getUrl(url);
         await phoneHomepage.maximizeWindow();
         expect(phoneHomepage.getCurrentUrl()).toMatch(url,'[beforeAll-1] The loaded URL is wrong!');        
